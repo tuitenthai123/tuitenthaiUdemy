@@ -39,7 +39,7 @@ export const NavbarRoutes = () => {
             <Button
               onClick={handlethemkhoahoc}
             >
-              Lưu khóa học
+              Save your course
             </Button>
           </div>
       ) :"" }
