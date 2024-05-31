@@ -3,14 +3,14 @@
 import { UserButton, useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
-import Link from "next/link";
-import axios from "axios";
 import { db } from "@/lib/db";
-
+import Link from "next/link";
+import { SearchInput } from "./search-input";
 import { Button } from "@/components/ui/button";
 import { isTeacher } from "@/lib/teacher";
 
-import { SearchInput } from "./search-input";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth();
@@ -23,6 +23,7 @@ export const NavbarRoutes = () => {
   const isCourseChapterPage = pathname?.includes("/courses") && pathname?.includes("/chapters") && !pathname?.startsWith("/teacher");;
   const handlethemkhoahoc = async () => {
     await axios.put(`/api/courses/${courseId}/chapters/${userId}/addkhoahoc`);
+    toast.success("Save your course success!");
   }
 
 
